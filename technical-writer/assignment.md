@@ -1,5 +1,6 @@
 
 <img title="k8s" alt="k8s" src="/technical-writer/k8s.png">
+Ashley McNamara, 2017.
 
 # Debug Operations in Kubernetes
 
@@ -73,6 +74,8 @@ You can run the command to create a clone of a pod that does not terminate if th
 
 
 # References
+
+- [Ashley McNamara,2017](https://medium.com/over-engineering/graceful-shutdown-with-go-http-servers-and-kubernetes-rolling-updates-6697e7db17cf)
 
 - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-strong-getting-started-strong-
 
