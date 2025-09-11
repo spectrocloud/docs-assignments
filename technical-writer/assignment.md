@@ -1,5 +1,20 @@
 # Debug Operations in Kubernetes
 
+## Before You Begin 
+- Your Pod should already be scheduled and running. If your Pod is not running, start with [Dedugging Pods](https://kubernetes.io/docs/tasks/debug/debug-application/)
+- For some advanced debugging steps you will need to know on which Node the Pod is running and have shell acccess to run commands on that Node. 
+
+## Viewing Pods and Nodes
+    *A Pod is a group of one or more application containers (such as Docker) and includes shared storage (volumes), IP address and information about how to run them.*
+
+To view a Pod or Node, use the Kubernetes Commamd Line Interface (CLI) to run the following command: 
+    `kubectl get pods`
+
+This will list all the pods that are available and their status.  
+To see the information for a specific pod, use the include the name of the namespace in the command: 
+    `kubectl get pods --namespace` 
+
+
 Kubernetes contains several commands, sometimes we can use these commands to do things. A good command to know is kubectl get pods which is used to get a list of all pods that are available and what their status is. Just rememember that when you use this command tat you may have to specify the `namespace`.
 
 ```shell
@@ -12,8 +27,12 @@ Speaking of commands, kubectl is the CLI that is used to interact with k8s. The 
 
 
 
-# References
+# See Also 
 
 - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-strong-getting-started-strong-
 
 - [What is Kubernetes](https://kubernetes.io/docs/concepts/overview/)
+
+# Feedback 
+Was this page helpful? 
+| Yes | No |
