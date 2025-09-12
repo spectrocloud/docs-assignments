@@ -1,13 +1,13 @@
 # Debug Operations in Kubernetes
 
 ## Before You Begin 
-- Your Pod should already be scheduled and running. If your Pod is not running, start with [Dedugging Pods](https://kubernetes.io/docs/tasks/debug/debug-application/)
-- For some advanced debugging steps, you will need to know on which Node the Pod is running and have shell acccess to run commands on that Node. 
+- Your Pod should already be scheduled and running. If your Pod is not running, start with [Debugging Pods](https://kubernetes.io/docs/tasks/debug/debug-application/)
+- For some advanced debugging steps, you will need to know on which Node the Pod is running and have shell access to run commands on that Node. 
 
 
 ## Viewing Pods and Nodes
       
-To view a Pod or Node, you can use the Kubernetes Commamd Line Interface (CLI) to run the following command: 
+To view a Pod or Node, you can use the Kubernetes Command Line Interface (CLI) to run the following command: 
 
 ```shell
     kubectl get pods
@@ -29,7 +29,7 @@ To view the logs of a specific Pod, you can use the CLI to run the following com
     kubectl logs
 ```
 The [-c CONTAINER] parameter can be used if there is more than one container. 
-This command is used to retrive the logs of a specific Pod.  Do use this when you have to debug a container. 
+This command is used to retrieve the logs of a specific Pod.  Do use this when you have to debug a container. 
 
 
 ## Running Commands Inside a Running Container 
@@ -41,7 +41,7 @@ When you need to interact with a container running in your cluster—whether to 
 
 
 ## Debugging a Container
-If you need to dedug the container, you can use `kubectl debug` to use automated debuigging tasks to learn what needs to be fixed. You can use this command to create a clone of the Pod that will keep running even if there is an error in the container. You can use the CLI to run this command: 
+If you need to debug the container, you can use `kubectl debug` to use automated debugging tasks to learn what needs to be fixed. You can use this command to create a clone of the Pod that will keep running even if there is an error in the container. You can use the CLI to run this command: 
 
 ```shell
     kubectl debug 
