@@ -5,34 +5,64 @@
 - For some advanced debugging steps you will need to know on which Node the Pod is running and have shell acccess to run commands on that Node. 
 
 ## Viewing Pods and Nodes
-    *A Pod is a group of one or more application containers (such as Docker) and includes shared storage (volumes), IP address and information about how to run them.*
+        *A Pod is a group of one or more application containers (such as Docker) and includes shared storage (volumes), IP address and information about how to run them.*
 
-To view a Pod or Node, use the Kubernetes Commamd Line Interface (CLI) to run the following command: 
-    `kubectl get pods`
-
-This will list all the pods that are available and their status.  
-To see the information for a specific pod, use the include the name of the namespace in the command: 
-    `kubectl get pods --namespace` 
-
-
-Kubernetes contains several commands, sometimes we can use these commands to do things. A good command to know is kubectl get pods which is used to get a list of all pods that are available and what their status is. Just rememember that when you use this command tat you may have to specify the `namespace`.
+To view a Pod or Node, you can use the Kubernetes Commamd Line Interface (CLI) to run the following command: 
 
 ```shell
-kubectl get pods --namespace 
+    kubectl get pods
+```    
+
+This will list all the pods that are available and their status.  
+
+To see the information for a specific pod, you can use the include the name of the namespace in the command: 
+
+```shell
+    kubectl get pods --namespace
 ```
 
-Speaking of commands, kubectl is the CLI that is used to interact with k8s. The kubectl cli commmunicates with the kubernettes API server.  Another command that is helpful is the kubectl logs command. In Azure, kubernetess is available, just like other cloud providers. This command is used to retrive the logs of a specific pod - do use this when you have to review logs or need to debug a container. Another we will dicuss is the `kubectl exec` command. A command that we can use to debug a container from the inside or to explore the the enviroment of the container itself.  I recommend when debugging you start with kubectl get pods, then `kubectl logs` and lastly we can use `kubectl exec` to explore the inside of the container and review other log files or configurations. 
+## Viewing Logs of a Pod 
+To view the logs of a specific Pod, you can use the CLI to run the following command: 
 
-**Note:** The command `kubectl debug` is another option to considering when debugging a container. This command can be used to create a clone of a pod that does not terminate if an error is experienced inside the container. 
+```shell
+    kubectl logs
+```
+The [-c CONTAINER] parameter can be used if there is more than one container. 
+This command is used to retrive the logs of a specific Pod.  Do use this when you have to debug a container. 
 
+## Running Commands Inside a Running Container 
+When you need to interact with a container running in your cluster—whether to troubleshoot, check logs, test commands, or manually fix a process — `kubectl exec` gives you a way to do it interactively. It is similar to using `ssh` on a VM, but for containers in Kubernetes. You can use the CLI to run this command: 
+
+```shell
+    kubectl exec
+```
+
+## Debugging a Container
+If you need to dedug the container, you can use the `kubectl debug` to use automated debuigging tasks to learn what needs to be fixed. You can use this command to create a clone of the Pod that will keep running even if there is an error in the container. You can use the CLI to run this command: 
+
+```shell
+    kubectl debug 
+```
+
+
+## Debugging Best Practices 
+- **Keep logs and events:** Logs and events are valuable sources of information when debugging Kubernetes clusters. It’s important to keep logs for a sufficient period of time and to store them in a central location for easy access.
+- **Use descriptive and meaningful labels:** Labels can be used to categorize and identify resources in a Kubernetes cluster. Using descriptive and meaningful labels can make it easier to find the resources you are looking for when debugging.
+- **Monitor resource usage:** Monitoring resource usage can help identify performance bottlenecks and resource constraints in the cluster. This information can be used to diagnose issues and to make adjustments to the cluster configuration.
 
 
 # See Also 
 
-- https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-strong-getting-started-strong-
+- [Debug Running Pods](https://kubernetes.io/docs/tasks/debug/debug-application/debug-running-pod/)
 
-- [What is Kubernetes](https://kubernetes.io/docs/concepts/overview/)
+- [kubectl get pods](https://kubernetes.io/docs/tutorials/kubernetes-basics/explore/explore-intro/)
+
+- [kubectl logs](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_logs/)
+
+- [kubectl exec](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_exec/)
+
 
 # Feedback 
 Was this page helpful? 
+
 | Yes | No |
