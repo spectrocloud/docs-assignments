@@ -1,7 +1,7 @@
 # Debug Operations in Kubernetes
 
 ## Before You Begin 
-- Your Pod should already be scheduled and running. If your Pod is not running, start with [Debugging Pods](https://kubernetes.io/docs/tasks/debug/debug-application/)
+- Your Pod should already be scheduled and running. If your Pod is not running, start with [Debugging Pods](https://kubernetes.io/docs/tasks/debug/debug-application/).
 - For some advanced debugging steps, you will need to know on which Node the Pod is running and have shell access to run commands on that Node. 
 
 
@@ -13,9 +13,9 @@ To view a Pod or Node, you can use the Kubernetes Command Line Interface (CLI) t
     kubectl get pods
 ```    
 
-This will list all the pods that are available and their status.  
+This will list all the Pods that are available and their status.  
 
-To see the information for a specific Pod, you can add the namespace to the command: 
+To see the information for a specific Pod, you can add the namespace parameter to the command: 
 
 ```shell
     kubectl get pods --namespace
@@ -28,8 +28,10 @@ To view the logs of a specific Pod, you can use the CLI to run the following com
 ```shell
     kubectl logs
 ```
+The above command is used to retrieve the logs of a specific Pod. 
 The [-c CONTAINER] parameter can be used if there is more than one container. 
-This command is used to retrieve the logs of a specific Pod.  Do use this when you have to debug a container. 
+You can use this command when you have to debug a container. 
+
 
 
 ## Running Commands Inside a Running Container 
