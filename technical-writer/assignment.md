@@ -1,19 +1,59 @@
-# Debug Operations in Kubernetes
+# Debug Commands
 
-Kubernetes contains several commands, sometimes we can use these commands to do things. A good command to know is kubectl get pods which is used to get a list of all pods that are available and what their status is. Just rememember that when you use this command tat you may have to specify the `namespace`.
+The `kubectl` command-line interface (CLI) allows containers to be debugged by accessing a cluster's [control plane](https://kubernetes.io/docs/reference/glossary/?all=true#term-control-plane) through the Kubernetes API.
+The control plane returns information about container lifecycles, which is then used for troubleshooting the cluster.
+
+Debugging combines several operations to retrieve information and test from the inside. 
+The official Kubernetes [debugging guide](https://kubernetes.io/docs/tasks/debug/) offers a deeper dive into troubleshooting beyond this document's scope.
+
+
+## Retrieve Information
+
+Run `kubectl get pods` to return a list of all pods in the current namespace.
+Provide a `--namespace` to retrieve information about pods in a given namespace, or use `--all-namespaces` to list all pods in all namespaces.
 
 ```shell
-kubectl get pods --namespace 
+kubectl get pods
 ```
 
-Speaking of commands, kubectl is the CLI that is used to interact with k8s. The kubectl cli commmunicates with the kubernettes API server.  Another command that is helpful is the kubectl logs command. In Azure, kubernetess is available, just like other cloud providers. This command is used to retrive the logs of a specific pod - do use this when you have to review logs or need to debug a container. Another we will dicuss is the `kubectl exec` command. A command that we can use to debug a container from the inside or to explore the the enviroment of the container itself.  I recommend when debugging you start with kubectl get pods, then `kubectl logs` and lastly we can use `kubectl exec` to explore the inside of the container and review other log files or configurations. 
+```
+NAME          READY   STATUS       RESTARTS        AGE
+examplepod1   1/1     Completed    1 (12s ago)     42s
+examplepod2   0/1     Waiting      0               2m21s
+```
 
-**Note:** The command `kubectl debug` is another option to considering when debugging a container. This command can be used to create a clone of a pod that does not terminate if an error is experienced inside the container. 
+Retrieve recent events from all pods with `kubectl describe pods`. 
+A pattern of events, along with logs from the pod, can be reviewed together while debugging a container.
 
+Retrieve the pod logs with `kubectl logs`.
+Provide a pod name, or fetch logs for all pods with `--all-pods`.
+
+
+## Debug Container
+
+Debugging a container can be achieved through two commands: `kubectl exec` and `kubectl debug`.
+
+Use `kubectl exec` to execute commands on an existing pod.
+This allows for exploration and testing through an interactive shell, making it great for simple troubleshooting cases.
+However, caution must be taken to avoid modifying other containers or pods.
+
+For scenarios requiring extensive pod access, use `kubectl debug`.
+This feature, introduced in Kubernetes version 1.18, creates a new container that connects to a running pod.
+Neither the application, nor container images, are modified when using this command.
+Once debugging is complete, the container can be disposed of without affecting the rest of the cluster.
 
 
 # References
 
-- https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-strong-getting-started-strong-
+- [Command line tool (kubectl)](https://kubernetes.io/docs/reference/kubectl/)
 
-- [What is Kubernetes](https://kubernetes.io/docs/concepts/overview/)
+- [Debugging Running Pods on Kubernetes](https://medium.com/datamindedbe/debugging-running-pods-on-kubernetes-2ba160c47ef5)
+  
+- [How to Get Pod Logs in Kubernetes](https://kodekloud.com/blog/kubectl-logs/)
+
+- [Logs](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs)
+
+- [Overview](https://kubernetes.io/docs/concepts/overview/)
+
+- [Pods](https://kubernetes.io/docs/concepts/workloads/pods/)
+
