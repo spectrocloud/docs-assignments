@@ -6,23 +6,23 @@ The following is a high-level overview of the markdown structure that all tutori
 ```
 # Title
 <Intro body>
-# Prerequisites
+## Prerequisites
 
-# [Concept 1]
+## [Concept 1]
 
-## [Sub-concept 1]
+### [Sub-concept 1]
 
-## [Sub-concept 2]
+### [Sub-concept 2]
 
-# [Concept 2]
+## [Concept 2]
 
-## [Sub-concept 1]
+### [Sub-concept 1]
 
-## [Sub-concept 2]
+### [Sub-concept 2]
 
-# Cleanup
+## Cleanup
 
-# Next Steps
+## Next Steps
 ```
 
 ## Section Breakdown
